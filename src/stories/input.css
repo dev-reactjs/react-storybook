@@ -1,0 +1,70 @@
+.storybook-input {
+  border-radius: 5px;
+  color: #333;
+  margin-left: 16px;
+  height: 26px;
+  width: 250px;
+  padding: 0 8px;
+} 
+
+.storybook-input--secondary {
+  color: #333;
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+}
+
+.storybook-input--primary {
+  color: #1ea7fd;
+  border-color: #1ea7fd;
+}
+
+.storybook-input--large {
+  height: 30px;
+}
+
+.storybook-input--small {
+  height: 22px;
+}
+
+.storybook-label {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.storybook-label--primary {
+  color: #1ea7fd;
+}
+
+.storybook-label--secondary {
+  color: #333;
+}
+
+.storybook-label--large {
+  font-size: 22px;
+}
+
+.storybook-label--small {
+  font-size: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 6px;
+  right: 24px;
+}
+
+.search-icon-large {
+  top: 9px;
+  right: 15px;
+}
+
+.search-icon-small {
+  top: 5px;
+  right: 30px;
+}
+
+.container {
+  width: 350px;
+  position: relative;
+}
