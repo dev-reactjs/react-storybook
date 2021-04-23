@@ -1,58 +1,81 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Search } from 'react-bootstrap-icons';
+import { Search, ArrowClockwise, ArrowLeftCircleFill, BarChartFill } from 'react-bootstrap-icons';
 import './input.css';
 
 /**
- * Primary UI component for user interaction
+ * Primary Input component for user interaction
  */
-export const Input = ({ primary, backgroundColor, size, label, ...props }) => {
+export const Input = ({ primary, borderColor, size, label, iconColor, placeholder, iconType, ...props }) => {
   const mode = primary ? 'storybook-input--primary' : 'storybook-input--secondary';
   const labelMode = primary ? 'storybook-label--primary' : 'storybook-label--secondary';
+
   return (
     <div className="container">
       <label for="input" className={['storybook-label', `storybook-label--${size}`, labelMode].join(' ')}>
-        Circle
+        {label}
       </label>
       <input
         type="text"
         className={['storybook-input', `storybook-input--${size}`, mode].join(' ')}
-        style={backgroundColor && { backgroundColor }}
+        style={borderColor && { borderColor }}
         id="input"
-        placeholder="Search"
+        placeholder={placeholder}
         {...props}
       />
-      <Search className={`search-icon search-icon-${size}`} />
+      <IconComponent iconType={iconType} className={`search-icon search-icon-${size}`} style={iconColor && { fill: iconColor }} />
     </div>
   );
 };
 
 Input.propTypes = {
   /**
-   * Is this the principal call to action on the page?
+   * Is this the primary input component?
    */
   primary: PropTypes.bool,
   /**
-   * What background color to use
+   * What border color to use
    */
-  backgroundColor: PropTypes.string,
+  borderColor: PropTypes.string,
   /**
-   * How large should the input be?
+   * How large should the input and label be?
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
-   * Button contents
+   * input lael
    */
   label: PropTypes.string.isRequired,
   /**
-   * Optional click handler
+   * icon color
    */
-  onClick: PropTypes.func,
+  iconColor: PropTypes.string,
+  /**
+   * placeholder
+   */
+  placeholder: PropTypes.string,
+  /**
+   * How large should the input and label be?
+   */
+  iconType: PropTypes.oneOf(['search', 'reload', 'back', 'analytics']),
 };
 
 Input.defaultProps = {
-  backgroundColor: null,
+  borderColor: null,
   primary: false,
   size: 'medium',
-  onClick: undefined,
+  label: "Input",
+  iconType: 'search'
 };
+
+const IconComponent = ({ iconType, ...rest }) => {
+  switch (iconType) {
+    case 'analytics':
+      return <BarChartFill {...rest} />;
+    case 'back':
+      return <ArrowLeftCircleFill {...rest} />;
+    case 'reload':
+      return <ArrowClockwise {...rest} />;
+    default:
+      return <Search {...rest} />;
+  }
+}

@@ -6,7 +6,8 @@ export default {
   title: 'Example/Input',
   component: Input,
   argTypes: {
-    backgroundColor: { control: 'color' },
+    borderColor: { control: 'color' },
+    iconColor: { control: 'color' }
   },
 };
 
