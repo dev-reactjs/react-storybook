@@ -1,7 +1,6 @@
 .storybook-input {
   border-radius: 5px;
   color: #333;
-  /* margin-left: 16px; */
   height: 26px;
   width: 250px;
   padding: 0 8px;
@@ -11,7 +10,6 @@
 .storybook-input--secondary {
   color: #333;
   background-color: transparent;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
 }
 
 .storybook-input--primary {
@@ -57,24 +55,21 @@
 
 .search-icon {
   position: absolute;
-  top: 6px;
-  right: 10px;
-  font-size: 16px;
-}
-
-.search-icon-large {
-  top: 6px;
+  top: 16px;
   right: 12px;
   font-size: 20px;
 }
 
 .search-icon-small {
-  top: 6px;
-  right: 8px;
-  font-size: 12px;
+  top: 12px;
+  right: 10px;
+  font-size: 16px;
 }
 
 .container {
   width: 400px;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

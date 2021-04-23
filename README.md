@@ -17,7 +17,7 @@ You will also see any lint errors in the console.
 ### `npm run storybook or yarn storybook`
 
 Runs storybook.<br>
-Open [http://localhost:6001](http://localhost:6001) to view it in the browser.
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 
 ### `npm run build`
 

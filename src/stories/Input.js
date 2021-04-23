@@ -1,26 +1,47 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Search, ArrowClockwise, ArrowLeftCircleFill, BarChartFill } from 'react-bootstrap-icons';
+import { TextField, makeStyles } from '@material-ui/core';
 import './input.css';
 
 /**
  * Primary Input component for user interaction
  */
-export const Input = ({ primary, borderColor, size, label, iconColor, placeholder, iconType, ...props }) => {
+
+export const InputComponent = ({ primary, borderColor, size, label, iconColor, placeholder, iconType, ...props }) => {
   const mode = primary ? 'storybook-input--primary' : 'storybook-input--secondary';
   const labelMode = primary ? 'storybook-label--primary' : 'storybook-label--secondary';
 
+  const useStyles = makeStyles({
+    root: {
+      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+        borderColor: borderColor || (primary && "#1ea7fd"),
+        padding: "18.5px 18px"
+      },
+      "& .MuiOutlinedInput-input": {
+        color: borderColor || (primary && "#1ea7fd")
+      },
+      "& .MuiInputLabel-outlined": {
+        color: borderColor || (primary && "#1ea7fd")
+      },
+    }
+  });
+
+  const classes = useStyles();
+
   return (
     <div className="container">
-      <label for="input" className={['storybook-label', `storybook-label--${size}`, labelMode].join(' ')}>
+      <label for="input" style={{ color: borderColor }} className={['storybook-label', `storybook-label--${size}`, labelMode].join(' ')}>
         {label}
       </label>
-      <input
-        type="text"
-        className={['storybook-input', `storybook-input--${size}`, mode].join(' ')}
-        style={borderColor && { borderColor }}
-        id="input"
+      <TextField
+        className={['storybook-input', `storybook-input--${size}`, mode, classes.root].join(' ')}
+        style={{ borderColor, width: 270, height: "100%" }}
+        id="outlined-basic"
         placeholder={placeholder}
+        variant="outlined"
+        label={label}
+        size={size}
         {...props}
       />
       <IconComponent iconType={iconType} className={`search-icon search-icon-${size}`} style={iconColor && { fill: iconColor }} />
@@ -28,7 +49,7 @@ export const Input = ({ primary, borderColor, size, label, iconColor, placeholde
   );
 };
 
-Input.propTypes = {
+InputComponent.propTypes = {
   /**
    * Is this the primary input component?
    */
@@ -59,7 +80,7 @@ Input.propTypes = {
   iconType: PropTypes.oneOf(['search', 'reload', 'back', 'analytics']),
 };
 
-Input.defaultProps = {
+InputComponent.defaultProps = {
   borderColor: null,
   primary: false,
   size: 'medium',
