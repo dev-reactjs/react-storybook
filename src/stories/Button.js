@@ -1,50 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './button.css';
+import { Button } from '@material-ui/core';
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const ButtonCom = ({ variant, style, color, size, label, ...props }) => {
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={backgroundColor && { backgroundColor }}
-      {...props}
-    >
-      {label}
-    </button>
+    <div>
+      <Button
+        variant={variant}
+        style={style}
+        size={size}
+        color={color}
+        {...props}
+      >
+        {label}
+      </Button>
+    </div>
+
+
+    /*   <button
+        type="button"
+        className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+        style={backgroundColor && { backgroundColor }}
+        {...props}
+      >
+        {label}
+      </button> */
   );
 };
 
-Button.propTypes = {
-  /**
-   * Is this the principal call to action on the page?
+ButtonCom.propTypes = {
+
+  /** 
+   * what is variant for button
    */
-  primary: PropTypes.bool,
-  /**
-   * What background color to use
-   */
-  backgroundColor: PropTypes.string,
+
+  variant: PropTypes.oneOf(['outlined', 'contained', 'default']),
+
+  /** 
+  * what is color for button
+  */
+  color: PropTypes.oneOf(['primary', 'secondary', 'default']),
+
   /**
    * How large should the button be?
    */
+
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
    * Button contents
    */
   label: PropTypes.string.isRequired,
-  /**
-   * Optional click handler
-   */
-  onClick: PropTypes.func,
 };
 
-Button.defaultProps = {
-  backgroundColor: null,
-  primary: false,
+ButtonCom.defaultProps = {
   size: 'medium',
-  onClick: undefined,
+  label: 'Click Me',
+  variant: 'default',
+  color: 'primary'
 };
